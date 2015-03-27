@@ -1,0 +1,24 @@
+﻿body 
+{
+    margin:0px;
+    background-color: rgb(224, 224, 224);
+    font-family:Arial, Helvetica, sans-serif;
+}
+#corps
+{
+    background-image: url(sable.jpg);
+    background-repeat: repeat;
+    color:rgb(48,48,48);
+    width:65%;
+    padding:15px;
+    margin:auto;
+    border-radius:10px;
+    text-align:center;
+}
+footer
+{
+    text-align: center;
+}
+/*l'afichage des lien par default */
+a:link,a:visited,a:hover, a:focus, a:active {color: black;}
+a:link,a:visited,a:hover, a:focus, a:active{text-decoration:none}
