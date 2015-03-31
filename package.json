@@ -1,14 +1,28 @@
 {
-    "name": "Projet_Nuggets",
-    "version": "0.1.0",
-    "dependencies": {
-        "express": "~4.11.0",
-        "ejs": "~2.1.4",
-        "cookie-session": "~1.1.0",
-        "body-parser": "~1.10.1",
-        "mysql": "~2.6.0",
-        "node-mysql": "~0.4.2"
-    },
-    "author": "Antoine garrec",
-    "description": "Nuggets"
+  "name": "Projet_AirAtlantique_GestionDesStocks",
+  "version": "1.0.0",
+  "description": "This is my school project 2014/2015. it is an aplication that manages inventory of aircraft and airport.",
+  "main": "serveur.js",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "cookie-session": "^1.1.0",
+    "ejs": "^2.3.1",
+    "express": "^4.12.3",
+    "mysql": "^2.6.1",
+    "node-mysql": "^0.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Synna/Projet_AirAtlantique_GestionDesStocks.git"
+  },
+  "author": "Antoine Garrec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Synna/Projet_AirAtlantique_GestionDesStocks/issues"
+  },
+  "homepage": "https://github.com/Synna/Projet_AirAtlantique_GestionDesStocks"
 }

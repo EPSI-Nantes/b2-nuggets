@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="index.css" rel="stylesheet" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Connexion</title>
-    </head>
-    <body>
-        <div id="corps">
-            <form method="post" action="/connexion">
-                <fieldset>
-                    <legend>Connexion</legend>
-                    <p>
-                        Identifiant :<input name="identifiant" type="text" id="identifiant" autofocus /><br />
-                        Mot de Passe :<input type="password" name="password" id="password" />
-                    </p>
-                </fieldset>
-                <p>
-                    <input type="submit" value="connexion" />
-                </p>
-            </form>
-        </div>
-        <footer>
-            <hr />
-            Copyright © 2015 - Webmaster: <a href="mailto:antoine.garrec@espi.fr">Antoine Garrec</a> & <a href="mailto:tom.sieg@espi.fr">Tom Sieg</a> - Tous droits réservés.
-            <hr />
-        </footer>
-    </body>
+<head>
+    <link href="index.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Connexion</title>
+</head>
+<body>
+    <form method="post" action="/connexion">
+        <fieldset>
+            <div id="field">
+                <legend>Connexion</legend>
+                <table>
+                    <tr>
+                        <td>Identifiant :</td>
+                        <td><input name="login" type="text" id="login" autofocus /></td>
+                    </tr>
+                    <tr>
+                        <td>Mot de Passe :</td>
+                        <td><input type="password" name="password" id="password" /></td>
+                    </tr><br>
+                </table><br>
+            </div>
+            <input type="submit" value="connexion" />
+        </fieldset>
+    </form>
+</body>
 </html>

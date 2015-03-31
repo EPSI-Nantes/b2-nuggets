@@ -1,21 +1,26 @@
+var reqmysql = require('./ressource/connection');
 var express = require('express');
-var session = require('cookie-session'); // Charge le middleware de sessions
-var bodyParser = require('body-parser'); // Charge le middleware de gestion des paramètres
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var session = require('cookie-session');
+var bodyParser = require('body-parser');
 var app = express();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.use(session({secret: 'todotopsecret'}))
 
+app.use(session({secret: 'todotopsecret'}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
-/* La page de connection */
-.get('/', function(req, res) { 
+app.get('/', function(req, res) { 
     res.render('index.ejs');
+});
+
+app.post('/connexion', function(req, res) {
+	var login = req.body.login;
+	var password = req.body.password;
+	reqmysql.selectuser(login, password);
 })
 
-/* On ajoute un élément à la todolist */
-.post('/connexion/', urlencodedParser, function(req, res) {
-		console.log(identifiant);
-    res.redirect('/');
-})
 .use(express.static(__dirname + '/css'))
 .listen(8080);
