@@ -4,6 +4,7 @@ var session = require('cookie-session');
 var bodyParser = require('body-parser');
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var sess;
 
 app.use(session({secret: 'todotopsecret'}));
 app.use(bodyParser.urlencoded({
@@ -22,7 +23,9 @@ app.post('/admin', function(req, res) {
 	reqmysql.selectuser(login, password, function callback (result){
 		try{
 	if (result.login == login && result.password == password) {
-    res.render('admin.ejs');
+		sess = req.session;
+		sess.access = result.access;
+    res.render('admin.ejs', {access: sess.access});
   	};
   	if (result.login == login && result.password != password) {
   	var msg = 'Mot de passe incorrect';
