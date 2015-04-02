@@ -43,4 +43,4 @@ app.post('/admin', function(req, res) {
 	});
 })
 .use(express.static(__dirname + '/css'))
-server.listen(8080);
+server.listen(8000);
