@@ -9,8 +9,14 @@ var connection = mysql.createConnection({
 var selectuser = function (login, password, callback){
 	//connection.connect();
   var queryString = 'SELECT id, login, password, access from user WHERE login = "'+ login + '"';    //je prépare ma requête
-	connection.query(queryString, function(err, rows, fields) {
+	connection.query(queryString, function(err, rows, fields) {                                       //j’exécute ma requête
+  //connection.end();
+  if (!err) {
     callback(rows[0]);
+    }
+  else{
+    callback(err);
+      }
 });
 };
 
