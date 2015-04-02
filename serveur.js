@@ -10,28 +10,28 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var sess;
 var io = require('socket.io').listen(server);
 
-
-
-
 app.use(session({secret: 'todotopsecret'}));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
 
-
-
-
-
-
 app.get('/', function(req, res) {
 var msg ='';
 res.render('index.ejs', {msg: msg});
 });
 
+app.get('/adminapplication', function(req, res) {
+  var loginajouter = req.body.loginajouter;
+  var passwordajouter = req.body.passwordajouter;
+  var access = req.body.access;
+  reqmysql.selectuser(loginajouter, passwordajouter, access, function callback (result){});
+res.render('adminappli.ejs');
+});
 
-
-
+app.post('/ajouteruser', function(req, res) {
+res.render('adminappli.ejs');
+});
 
 app.post('/admin', function(req, res) {
 	var login = req.body.login;
@@ -54,9 +54,5 @@ app.post('/admin', function(req, res) {
   	}
 	});
 })
-
-
-
-
-.use(express.static(__dirname + '/css'))
+.use(express.static(__dirname + '/css'));
 server.listen(8080);

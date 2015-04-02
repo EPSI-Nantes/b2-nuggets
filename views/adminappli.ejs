@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="index.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Connexion</title>
+</head>
+<body>
+    <form method="post" action="/ajouteruser">
+        <fieldset>
+            <div>
+                <legend>Ajouter un utilisateur</legend>
+                <div id='conex'>
+                <table>
+                    <tr>
+                        <td>Identifiant :</td>
+                        <td><input name="loginajouter" type="text" id="loginajouter" autofocus /></td>
+                    </tr>
+                    <tr>
+                        <td>Mot de Passe :</td>
+                        <td><input type="password" name="passwordajouter" id="passwordajouter" /></td>
+                    </tr>
+                        <tr>
+                        <td>Accés :</td>
+                        <td><SELECT name="access" size="1">
+                            <OPTION>user</OPTION>.
+                            <OPTION>admin</OPTION>.
+                            </SELECT>
+                        </td>
+                    </tr><br>
+                </table>
+                </div><br>
+            </div>
+            <input type="submit" value="Ajouter" />
+        </fieldset>
+    </form>
+</body>
+</html>

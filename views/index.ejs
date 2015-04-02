@@ -8,9 +8,10 @@
 <body>
     <form method="post" action="/admin">
         <fieldset>
-            <div id="field">
+            <div id="corps">
                 <legend>Connexion</legend>
                 <%= msg %>
+                <div id="cate">
                 <table>
                     <tr>
                         <td>Identifiant :</td>
@@ -20,7 +21,8 @@
                         <td>Mot de Passe :</td>
                         <td><input type="password" name="password" id="password" /></td>
                     </tr><br>
-                </table><br>
+                </table>
+                </div><br>
             </div>
             <input type="submit" value="connexion" />
         </fieldset>

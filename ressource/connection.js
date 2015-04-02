@@ -15,3 +15,11 @@ var selectuser = function (login, password, callback){
 });
 };
 exports.selectuser = selectuser;
+
+var ajoutuser = function (loginajouter, passwordajouter, access, callback){
+  var queryString = 'INSERT INTO user (`id`, `login`, `password`, `access`) VALUES (NULL, '+ loginajouter +', '+ passwordajouter +', '+ access +');';
+	connection.query(queryString, function(err, rows, fields) {
+    callback(rows[0]);
+});
+};
+exports.ajoutuser = ajoutuser;
