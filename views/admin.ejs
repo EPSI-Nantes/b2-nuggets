@@ -4,11 +4,135 @@
     <link href="index.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Connexion</title>
+
+<style type="text/css">
+#element0
+{
+        background-color: red;
+        border: 1px solid #000;
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: 200px;
+        left: 500px;
+        visibility: visible;
+}
+    
+#element
+{
+        background-color: green;
+        border: 1px solid #000;
+        height: 40px;
+        width: 40px;
+        visibility: visible;
+}
+
+body
+{
+    border: 4px solid black;
+    height: 400px;
+    width: 800px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var dragged = null;//Lorsque dragged = null, il n'y a rien en cours de déplacement
+var ferme = true;
+var dedans=false;
+
+//pour pouvoir envoyer en fonction du navigateur
+function getXMLHttpRequest() {
+    var xhr = null;
+    
+    if (window.XMLHttpRequest || window.ActiveXObject) {
+        if (window.ActiveXObject) {
+            try {
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch(e) {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        } else {
+            xhr = new XMLHttpRequest(); 
+        }
+    } else {
+        alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+        return null;
+    }
+    
+    return xhr;
+}
+
+//retour en position zero
+var xhr = getXMLHttpRequest();
+xhr.open("POST", "garage2.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("ordre=fermer");
+
+function start_drag(objet)
+{
+
+  dragged = objet; //On le place comme objet en cours
+    
+}
+
+function drag_onmousemove(event)  //Lorsque la souris se déplace
+{
+  if( dragged )
+  {
+      dedans=false;
+        var x = event.clientX -20;
+        var y = event.clientY -20;
+        //Nouveau code :
+        var element = document.getElementById('element0');
+        element.style.position = 'absolute';
+        element.style.left = x + 'px';
+        element.style.top = y + 'px';
+        element.style.backgroundColor = 'green';
+
+        //bordure
+        if (x>800)
+        {
+            element.style.left = 800 + 'px';
+        }
+        if (y>800)
+        {
+            element.style.top = 800 + 'px';
+        }
+  }
+}
+
+//ajouter des évènements
+function addEvent(obj,event,fct)
+{
+  if( obj.attachEvent)
+     obj.attachEvent('on' + event,fct);
+  else
+     obj.addEventListener(event,fct,true);
+}
+
+//On ajoute les deux évènements avec la méthode
+addEvent(document,'mousemove',drag_onmousemove);
+addEvent(document,'mouseup',drag_onmouseup);
+
+  
+var x = event.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+var y = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
+</script>
+
 </head>
-<body>
-            <div id="field">
-            <p> ITS WORKS Bienvenue dans l'admin wesh </p>
-            <%= access %>
-            </div>
+<body onmousemove="souris(event);">
+        
+			    <div id="garageF">
+			        
+			    </div>
+			    
+
+			    <div id="element0" onmousedown="start_drag(document.getElementById('element0'),event);">
+			    </div>
+			    
+			    
 </body>
+
 </html>
