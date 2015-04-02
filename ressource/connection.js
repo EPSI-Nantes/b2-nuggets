@@ -1,10 +1,12 @@
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'stocks'
-});
+var mysql = require('mysql');
+var connection = mysql.createConnection(
+    {
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      database : 'stocks',
+    }
+);
 
 var selectuser = function (login, password, callback){
   var queryString = 'SELECT id, login, password, access from user WHERE login = "'+ login + '"';
@@ -12,3 +14,4 @@ var selectuser = function (login, password, callback){
     callback(rows[0]);
 });
 };
+exports.selectuser = selectuser;
