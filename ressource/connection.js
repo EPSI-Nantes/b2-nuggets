@@ -7,40 +7,8 @@ var connection = mysql.createConnection({
 });
 
 var selectuser = function (login, password, callback){
-	//connection.connect();
-  var queryString = 'SELECT id, login, password, access from user WHERE login = "'+ login + '"';    //je prépare ma requête
+  var queryString = 'SELECT id, login, password, access from user WHERE login = "'+ login + '"';
 	connection.query(queryString, function(err, rows, fields) {
     callback(rows[0]);
 });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function selectuser (login, password, callback) {
-//     var query = connection.query('SELECT id, login, password, access from user WHERE login = "'+ login + '"');
-//     console.log('PREMIERRRRRRRRRRRRRRRRRRRRRR' + rows)
-//     query.on('result', function(row) {
-//         console.log('DEUXIEEEEEMMMMMMMMMMMMMM' + rows)
-//         callback(null, row.dynamicField);
-//     });
-// };
-exports.selectuser = selectuser;
