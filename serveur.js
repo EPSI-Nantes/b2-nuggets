@@ -2,9 +2,13 @@ var reqmysql = require('./ressource/connection');
 var express = require('express');
 var session = require('cookie-session');
 var bodyParser = require('body-parser');
+var http = require('http');
+var fs = require('fs');
 var app = express();
+var server = http.createServer(app);
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var sess;
+var io = require('socket.io').listen(server);
 
 app.use(session({secret: 'todotopsecret'}));
 app.use(bodyParser.urlencoded({
@@ -38,6 +42,5 @@ app.post('/admin', function(req, res) {
   	}
 	});
 })
-
 .use(express.static(__dirname + '/css'))
-.listen(8080);
+server.listen(8080);
