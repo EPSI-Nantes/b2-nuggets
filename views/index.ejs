@@ -6,12 +6,11 @@
     <title>Connexion</title>
 </head>
 <body>
+    <div id="champ">
     <form method="post" action="/admin">
-        <fieldset>
-            <div id="corps">
                 <legend>Connexion</legend>
                 <%= msg %>
-                <div id="cate">
+                <div id="conex">
                 <table>
                     <tr>
                         <td>Identifiant :</td>
@@ -23,10 +22,9 @@
                     </tr><br>
                 </table>
                 </div><br>
-            </div>
             <input type="submit" value="connexion" />
-        </fieldset>
     </form>
+</div>
         <p><input type="button" value="Embêter le serveur" id="poke" /></p>
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>

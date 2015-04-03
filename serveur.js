@@ -22,15 +22,27 @@ res.render('index.ejs', {msg: msg});
 });
 
 app.get('/adminapplication', function(req, res) {
-  var loginajouter = req.body.loginajouter;
-  var passwordajouter = req.body.passwordajouter;
-  var access = req.body.access;
-  reqmysql.selectuser(loginajouter, passwordajouter, access, function callback (result){});
+// reqmysql.afficheruser(function callback (result){
+//   console.log(result);
+// });
 res.render('adminappli.ejs');
 });
 
+app.post('/deletuser', function(req, res) {
+  var useradelet = req.body.useradelet;
+  reqmysql.deletuser(useradelet, function callback (result){
+  });
+res.redirect('/adminapplication');
+});
+
 app.post('/ajouteruser', function(req, res) {
-res.render('adminappli.ejs');
+  var loginajouter = req.body.loginajouter;
+  var passwordajouter = req.body.passwordajouter;
+  var access = req.body.access;
+  reqmysql.ajoutuser(loginajouter, passwordajouter, access, function callback (result){
+  console.log(result)
+  });
+res.redirect('/adminapplication');
 });
 
 app.post('/admin', function(req, res) {
