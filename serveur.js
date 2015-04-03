@@ -22,10 +22,11 @@ res.render('index.ejs', {msg: msg});
 });
 
 app.get('/adminapplication', function(req, res) {
-// reqmysql.afficheruser(function callback (result){
-//   console.log(result);
-// });
-res.render('adminappli.ejs');
+  var user;
+reqmysql.afficheruser(function callback (result){
+  user = result;
+res.render('adminappli.ejs', {msg: user});
+});
 });
 
 app.post('/deletuser', function(req, res) {
@@ -40,7 +41,6 @@ app.post('/ajouteruser', function(req, res) {
   var passwordajouter = req.body.passwordajouter;
   var access = req.body.access;
   reqmysql.ajoutuser(loginajouter, passwordajouter, access, function callback (result){
-  console.log(result)
   });
 res.redirect('/adminapplication');
 });

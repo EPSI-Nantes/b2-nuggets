@@ -20,13 +20,10 @@
                         <td>Mot de Passe :</td>
                         <td><input type="password" name="passwordajouter" id="passwordajouter" /></td>
                     </tr>
-                        <tr>
+                    <tr>
                         <td>Accés :</td>
-                        <td><SELECT name="access" size="1">
-                            <OPTION>user</OPTION>.
-                            <OPTION>admin</OPTION>.
-                            </SELECT>
-                        </td>
+                        <td><input type="radio" name="access" value="user" checked>user</td>
+                        <td><input type="radio" name="access" value="admin">admin</td>
                     </tr><br>
                 </table>
                 </div><br>
@@ -42,13 +39,17 @@
                 <table>
                     <tr>
                         <td>Identifiant :</td>
-                        <td><input name="useradelet" type="number" id="useradelet" autofocus /></td>
-                    </tr>><br>
+                        <td><select name="useradelet" size="1" id="useradelet">
+                        <% msg.forEach(function(row){ %>
+                            <option value="<%= row.id %>"><%= row.login %></option>
+                        <% }) %>
+                            </select></td>
+                    </tr><br>
                 </table>
                 </div><br>
             </div>
             <input type="submit" value="Suprimer" />
-    </form>
+        </form>
 </div>
 </body>
 </html>

@@ -19,7 +19,7 @@ exports.selectuser = selectuser;
 var afficheruser = function (callback){
   var queryString = 'SELECT id, login from user';
   connection.query(queryString, function(err, rows, fields) {
-    callback(rows[0]);
+    callback(rows);
 });
 };
 exports.afficheruser = afficheruser;
