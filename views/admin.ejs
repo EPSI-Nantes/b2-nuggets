@@ -70,16 +70,20 @@ xhr.open("POST", "garage2.php", true);
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 xhr.send("ordre=fermer");
 
-function start_drag(objet)
+function drag(objet)
 {
-
-  dragged = objet; //On le place comme objet en cours
-    
+    if (dragged == objet)
+    {
+        dragged = null; //On l'enlève l'objet en cours
+    }else
+    {
+        dragged = objet; //On le place comme objet en cours
+    }
 }
 
 function drag_onmousemove(event)  //Lorsque la souris se déplace
 {
-  if( dragged )
+  if( dragged)
   {
       dedans=false;
         var x = event.clientX -20;
@@ -92,14 +96,15 @@ function drag_onmousemove(event)  //Lorsque la souris se déplace
         element.style.backgroundColor = 'green';
 
         //bordure
-        if (x>800)
-        {
-            element.style.left = 800 + 'px';
-        }
-        if (y>800)
-        {
-            element.style.top = 800 + 'px';
-        }
+        if (x>763)
+        {element.style.left = 763 + 'px';} 
+        else if (x<4)
+        {element.style.left = 4 + 'px';}
+
+        if (y>362)
+        {element.style.top = 362 + 'px'; }
+        else if (y<4)
+        {element.style.top = 4 + 'px';}
   }
 }
 
@@ -129,7 +134,7 @@ var y = event.clientY + (document.body.scrollTop || document.documentElement.scr
 			    </div>
 			    
 
-			    <div id="element0" onmousedown="start_drag(document.getElementById('element0'),event);">
+			    <div id="element0" onmousedown="drag(document.getElementById('element0'),event);">
 			    </div>
 			    
 			    
