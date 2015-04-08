@@ -1,0 +1,32 @@
+body
+{
+    margin:0px;
+}
+
+#map
+{
+    border: 4px solid black;
+    margin:0px;
+    height: 400px;
+    width: 800px; 
+}
+
+#element0
+{
+        background-color: red;
+        border: 1px solid #000;
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        visibility: visible;
+}
+    
+#element
+{
+        background-color: green;
+        border: 1px solid #000;
+        height: 40px;
+        width: 40px;
+        visibility: visible;
+}
+
