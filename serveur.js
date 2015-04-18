@@ -30,20 +30,17 @@ res.render('plan.ejs', {msg: msg});
 });
 
 //enregistrement des positions(copié à modifier!!!!!!!!!!!)
-app.post('/enregistrementElements', function(req, res) {
-//var id = req.body.element0.id;
-//var x = req.body.element0.left;
-//var y = req.body.element0.right;
+app.post('/enregistrerElement', function(req, res) {
+var id = req.body.element0.id;
+var x = req.body.element0.left;
+var y = req.body.element0.right;
 reqmysql.enregistrementElements(id, x, y, function callback (result){
 });
 res.redirect('/plan');
 });
 
-//test
-app.post('/enregistrerElement',function(req, res) {
-var msg = x;
-res.redirect('/plan');
-});
+//TEST-----------------------------------------------------------//
+
 
 //aller à la page adminappli
 app.get('/adminapplication', function(req, res) {
