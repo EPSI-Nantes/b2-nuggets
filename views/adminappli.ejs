@@ -6,9 +6,13 @@
     <title>Connexion</title>
 </head>
 <body>
-    <div id="champ">
-    <form method="post" action="/ajouteruser">
-            <div>
+        <a href="/admin">
+        <div class="gomenu">
+        <h1>Menu</h1>
+        </div>
+        </a>
+    <div id="corps">
+            <form method="post" action="/ajouteruser">
                 <legend>Ajouter un utilisateur</legend>
                 <div id='conex'>
                 <table>
@@ -26,14 +30,11 @@
                         <td><input type="radio" name="access" value="admin">admin</td>
                     </tr><br>
                 </table>
-                </div><br>
-            </div>
+                </div>
+<br>
             <input type="submit" value="Ajouter" />
-    </div>
-    </form>
-        <div id="champ">
+            </form></div><br><div id="corps">
         <form method="post" action="/deletuser">
-            <div>
                 <legend>Supprimer un utilisateur</legend>
                 <div id='conex'>
                 <table>
@@ -47,8 +48,7 @@
                     </tr><br>
                 </table>
                 </div><br>
-            </div>
-            <input type="submit" value="Suprimer" />
+                <input type="submit" value="Suprimer" />
         </form>
 </div>
 </body>

@@ -5,17 +5,21 @@
     font-family:Arial, Helvetica, sans-serif;
     background-color: rgb(224, 224, 224);
 }
+td
+{
+ text-align: center;
+}
 #champ
 {
     border:1px solid black;
     box-shadow:2px 2px 10px black;
-    height: 150px;
-    width: 200px;
+    height: 170px;
+    width: 400px;
     display:inline-block;
     background-color:rgb(255,136,17);
     color:rgb(245,245,245);
     margin:auto;
-    margin-top: 5px;
+    margin-top: 150px;
 }
 #conex
 {
@@ -32,18 +36,6 @@
     background-color: rgb(233, 233, 233);
     text-align:center;
 }
-#cate
-{
-    border:1px solid black;
-    box-shadow:2px 2px 10px black;
-    height: 150px;
-    width: 200px;
-    display:inline-block;
-    background-color:rgb(255,136,17);
-    color:rgb(245,245,245);
-    margin:auto;
-    margin-top: 5px;
-}
 /*l'afichage des lien par default */
 a:link,a:visited,a:hover, a:focus, a:active {color: black;}
 a:link,a:visited,a:hover, a:focus, a:active{text-decoration:none}
@@ -52,22 +44,22 @@ a:link,a:visited,a:hover, a:focus, a:active{text-decoration:none}
     border:1px solid black;
     box-shadow:2px 2px 10px black;
     height: 150px;
-    width: 200px;
+    width: 250px;
     display:inline-block;
     background-color:rgb(255,136,17);
     color:rgb(245,245,245);
     margin:auto;
     margin-top: 5px;
+    padding-top: 3%;
 }
-#cadre
+.gomenu
 {
     border:1px solid black;
-    color:rgb(48,48,48);
-    width:1000px;
-    padding:50px;
-    margin:auto;
-    border-radius:10px;
-    background-color: rgb(233, 233, 233);
-    text-align:center;
-
+    box-shadow:2px 2px 10px black;
+    height: 70px;
+    width: 150px;
+    display:inline-block;
+    background-color:rgb(255,136,17);
+    color:rgb(245,245,245);
+    margin-left: -50%;
 }

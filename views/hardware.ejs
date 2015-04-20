@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="index.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hardware</title>
+</head>
+<body>
+        <a href="/admin">
+        <div class="gomenu">
+        <h1>Menu</h1>
+        </div>
+        </a>
+    <div id="corps">
+        <table>
+            <tr>
+                <td>ID l'equipement</td>
+                <td>     </td>
+                <td>Nom</td>
+                <td>     </td>
+                <td>Adresse IP</td>
+                <td>     </td>
+                <td>Statut</td>
+            </tr>
+            <% msg.forEach(function(row){ %>
+            <tr>
+                <td><%= row.id %></td>
+                <td>     </td>
+                <td><%= row.name %></td>
+                <td>     </td>
+                <td><%= row.ip %></td>
+                <td>     </td>
+            </tr>
+            <% }) %>
+            <form method="post" action="/ajouterhardware">
+            <tr>
+                <td>Ajouter un equipement</td>
+                <td>     </td>
+                <td><input name="nameeq" type="text" id="nameeq"/></td>
+                <td>     </td>
+                <td><input name="ip" type="text" id="ip"/></td>
+                <td>     </td>
+                <td><input type="submit" value="Ajouter" /></td>
+            </tr>
+            </form>
+            <form method="post" action="/delethardware">
+            <tr>
+                <td>Supprimer un equipement</td>
+                <td>     </td>
+                <td>Nom: </td>
+                <td>     </td>
+                <td>
+                    <select name="hardwareadelet" size="1" id="hardwareadelet">
+                        <% msg.forEach(function(row){ %>
+                        <option value="<%= row.id %>"><%= row.name %></option>
+                        <% }) %>
+                    </select>
+                </td>
+                <td>     </td>
+                <td><input type="submit" value="Supprimer" /></td>
+            </tr>
+            </form>
+        </table>
+    </div>
+</body>
+</html>
+
+ 
