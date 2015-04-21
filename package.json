@@ -1,5 +1,5 @@
 {
-  "name": "Projet_AirAtlantique_GestionDesStocks",
+  "name": "Projet_Nuggets",
   "version": "1.0.0",
   "description": "This is my school project 2014/2015. it is an aplication that manages inventory of aircraft and airport.",
   "main": "serveur.js",
@@ -11,7 +11,9 @@
     "express-session": "^1.10.4",
     "mysql": "^2.6.1",
     "node-mysql": "^0.4.2",
-    "socket.io": "^1.3.5"
+    "ping": "^0.1.9",
+    "socket.io": "^1.3.5",
+    "tcp-ping": "^0.1.1"
   },
   "devDependencies": {},
   "scripts": {

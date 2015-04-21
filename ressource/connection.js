@@ -8,8 +8,6 @@ var connection = mysql.createConnection(
     }
 );
 
-
-
 var login = function (login, password, callback){
 connection.query('SELECT id, access from user WHERE login = ? AND password = ?',[ login , password],  function(err, rows, fields) {
 try{
@@ -43,6 +41,22 @@ var lshardware = function (callback){
 };
 exports.lshardware = lshardware;
 
+var lsservice = function (callback){
+  var queryString = 'SELECT id, name, ip, port from service';
+  connection.query(queryString, function(err, rows, fields) {
+    callback(rows);
+});
+};
+exports.lsservice = lsservice;
+
+var lsserviceaping = function (callback){
+  var queryString = 'SELECT ip, port from service';
+  connection.query(queryString, function(err, rows, fields) {
+    callback(rows);
+});
+};
+exports.lsserviceaping = lsserviceaping;
+
 var deletuser = function (useradelet){ 
   connection.query('DELETE FROM user WHERE id = ? ;', [ useradelet ],  function(err, rows, fields) {
 });
@@ -54,6 +68,12 @@ var delethardware = function (hardwareadelet){
 });
 };
 exports.delethardware = delethardware;
+
+var deletservice = function (serviceadelet){
+  connection.query('DELETE FROM service WHERE id = ? ;', [ serviceadelet ],  function(err, rows, fields) {
+});
+};
+exports.deletservice = deletservice;
 
 var ajoutuser = function (loginajouter, passwordajouter, access, callback){
 connection.query('INSERT INTO user (login, password, access) VALUES (?, ?, ?);',[ loginajouter , passwordajouter, access],  function(err, rows, fields) {
@@ -70,7 +90,13 @@ connection.query('INSERT INTO user (login, password, access) VALUES (?, ?, ?);',
 exports.ajoutuser = ajoutuser;
 
 var ajouterhardware = function (nameeq, ip){
-connection.query('INSERT INTO equipement (name, ip) VALUES (?, ?);',[ nameeq , ip],  function(err, rows, fields) {
+connection.query('INSERT INTO equipement (name, ip) VALUES (?, ?);', [ nameeq , ip],  function(err, rows, fields) {
 });
 };
 exports.ajouterhardware = ajouterhardware;
+
+var ajouterservice = function (namese, ipse, portse){
+connection.query('INSERT INTO service (name, ip, port) VALUES (?, ?, ?);', [ namese , ipse, portse],  function(err, rows, fields) {
+});
+};
+exports.ajouterservice = ajouterservice;
