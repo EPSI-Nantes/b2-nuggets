@@ -122,12 +122,19 @@
             </form>
         </table>
     </div>
-        <div id="corps">
+<div id="corps">
+<table>
+<% hardwarestatus.forEach(function(row){ %>
+<tr><%= row %></tr>
+<% }) %>
+</table>
+</div>
+<div id="corps">
 <table>
 <% servicestatus.forEach(function(row){ %>
 <tr><%= row %></tr>
 <% }) %>
 </table>
-    </div>
+</div>
 </body>
 </html>
