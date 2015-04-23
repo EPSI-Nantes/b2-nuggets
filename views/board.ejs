@@ -3,7 +3,7 @@
 <head>
     <link href="index.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Hardware</title>
+    <title>Board</title>
 </head>
 <body>
         <a href="/admin">
@@ -20,16 +20,18 @@
                 <td>     </td>
                 <td>Adresse IP</td>
                 <td>     </td>
-                <td>Statut</td>
+                <td>Action</td>
             </tr>
             <% hardware.forEach(function(row){ %>
             <tr>
+                <form method="post" action="">
                 <td><%= row.id %></td>
+                <input type="hidden"  name="idtest"  value="<%= row.id %>">
                 <td>     </td>
                 <td><%= row.name %></td>
                 <td>     </td>
                 <td><%= row.ip %></td>
-                <td>     </td>
+                <input type="hidden"  name="iptest"  value="<%= row.ip %>">
             </tr>
             <% }) %>
             <form method="post" action="/ajouterhardware">
@@ -73,7 +75,7 @@
                 <td>     </td>
                 <td>port</td>
                 <td>     </td>
-                <td>Statut</td>
+                <td>Action</td>
             </tr>
             <% service.forEach(function(row){ %>
             <tr>
@@ -120,7 +122,12 @@
             </form>
         </table>
     </div>
+        <div id="corps">
+<table>
+<% servicestatus.forEach(function(row){ %>
+<tr><%= row %></tr>
+<% }) %>
+</table>
+    </div>
 </body>
 </html>
-
- 

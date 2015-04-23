@@ -11,7 +11,8 @@ var app = express();
 var server = http.createServer(app);
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var sess;
-var io = require('socket.io').listen(server);
+var io = require('socket.io');
+io = io.listen(server);
 var lsavions;
 var lsproduit = '';
 var lsaeroports;
@@ -38,45 +39,71 @@ app.post('/deletservice', function(req, res) {
 res.redirect('/board');
 });
 
+
+
+
+
+
+
+
+
+
+
+
 app.get('/board', function(req, res) {
+  var statuhardware;
 reqmysql.lshardware(function callback (result){
-var hosts = [];
-var hardware = result;
-hardware.forEach(function(row) {
-hosts.push(row.ip);
-})
-hosts.forEach(function(host){
-    ping.sys.probe(host, function(isAlive){
-        var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
-        console.log(msg);
-    });
-});
+  var hardware = result;
 reqmysql.lsservice(function callback (result2){
-var service = result2;
-var servi = [];
-service.forEach(function(row) {
-var temp = [];
-temp.push(row.ip);
-temp.push(row.port);
-servi.push(temp);
-})
-console.log(servi);
+  var service = result2;
+  var servi = [];
+
+  var servicestatus = [];
+  service.forEach(function(row) {
+  var temp = [];
+  temp.push(row.ip);
+  temp.push(row.port);
+  servi.push(temp);
+  })
+var servicecount = servi.length;
+console.log(servicecount);
 servi.forEach(function(item) {
+pingservice(item, function callback (result3){
+  console.log(result3);
+servicestatus.push(result3);
+var longueur=servicestatus.length;
+if (longueur == servicecount) {
+  console.log(servicestatus);
+  res.render('board.ejs', {hardware: hardware, service: service, servicestatus: servicestatus});
+};
+  });
+});
+});
+});
+});
+
+
+
+
+function pingservice (item, callback){
     var sock = new net.Socket();
     sock.setTimeout(2500);
     sock.on('connect', function() {
-        console.log(item[0]+':'+item[1]+' is up.');
+    callback(item[0]+':'+item[1]+' is alive');
         sock.destroy();
     }).on('error', function(e) {
-        console.log(item[0]+':'+item[1]+' is down: ' + e.message);
+    callback(item[0]+':'+item[1]+' is dead: ' + e.message);
     }).on('timeout', function(e) {
-        console.log(item[0]+':'+item[1]+' is down: timeout');
+    callback(item[0]+':'+item[1]+' is dead: timeout');
     }).connect(item[1], item[0]);
-});
-res.render('board.ejs', {hardware: hardware, service: service});
-});
-});
-});
+};
+exports.pingservice = pingservice;
+
+
+
+
+
+
 
 app.post('/ajouterservice', function(req, res) {
   var namese = req.body.namese;

@@ -24,7 +24,6 @@ catch(err){
 };
 exports.login = login;
 
-
 var afficheruser = function (callback){
   var queryString = 'SELECT id, login from user';
   connection.query(queryString, function(err, rows, fields) {
@@ -40,6 +39,14 @@ var lshardware = function (callback){
 });
 };
 exports.lshardware = lshardware;
+
+var countservice = function (callback){
+  var queryString = 'SELECT COUNT(*) FROM service';
+  connection.query(queryString, function(err, rows, fields) {
+    callback(rows);
+});
+};
+exports.countservice = countservice;
 
 var lsservice = function (callback){
   var queryString = 'SELECT id, name, ip, port from service';
