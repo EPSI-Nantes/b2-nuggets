@@ -24,14 +24,11 @@
             </tr>
             <% hardware.forEach(function(row){ %>
             <tr>
-                <form method="post" action="">
                 <td><%= row.id %></td>
-                <input type="hidden"  name="idtest"  value="<%= row.id %>">
                 <td>     </td>
                 <td><%= row.name %></td>
                 <td>     </td>
                 <td><%= row.ip %></td>
-                <input type="hidden"  name="iptest"  value="<%= row.ip %>">
             </tr>
             <% }) %>
             <form method="post" action="/ajouterhardware">
@@ -131,9 +128,11 @@
 </div>
 <div id="corps">
 <table>
-<% servicestatus.forEach(function(row){ %>
-<tr><%= row %></tr>
-<% }) %>
+<% servicestatus.forEach(function(a){ %>
+<% for(var i = 0; i < a.length;i++){ %>
+<tr><%= a[i] %></tr>
+<% }; %>
+<% }); %>
 </table>
 </div>
 </body>
